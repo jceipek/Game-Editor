@@ -13,5 +13,5 @@ Also, writing game engines is a fun learning experience, and I want to do someth
 Dependencies?
 =============
 
-Right now? Just SFML.
+Right now? Just SFML (2.0).
 I'm developing on OS X 10.7 for now, but I will begin testing on other platforms as soon as I bring other people on board.
