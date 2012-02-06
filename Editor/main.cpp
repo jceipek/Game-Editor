@@ -2,10 +2,12 @@
 #include <SFML/Audio.hpp>
 #include "ResourcePath.hpp"
 
+#include <sstream>
+
 int main (int argc, const char * argv[])
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor");
 
     // Load a sprite to display
     sf::Texture texture;
@@ -17,9 +19,17 @@ int main (int argc, const char * argv[])
     sf::Font font;
     if (!font.LoadFromFile(ResourcePath() + "sansation.ttf"))
     	return EXIT_FAILURE;
-    sf::Text text("Hello SFML", font, 50);
-    text.SetColor(sf::Color::Black);
+    sf::Text text("Object", font, 20);
+    text.SetColor(sf::Color::White);
+    text.SetPosition(10.0f, 0.0f);
 
+    sf::Text fpsMonitor("0", font, 20);
+    fpsMonitor.SetColor(sf::Color::Black);
+    fpsMonitor.SetPosition(770.0f, 575.0f);
+    
+    sf::RectangleShape rect(sf::Vector2f(200.0f,600.0f));
+    rect.SetFillColor(sf::Color(0,0,0,200));
+    
     // Load a music to play
     sf::Music music;
     if (!music.OpenFromFile(ResourcePath() + "nice_music.ogg"))
@@ -28,6 +38,7 @@ int main (int argc, const char * argv[])
     // Play the music
     music.Play();
         
+    bool showEditor = false;
 
     // Start the game loop
     while (window.IsOpened())
@@ -43,6 +54,10 @@ int main (int argc, const char * argv[])
     		// Escape pressed : exit
     		if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Escape)
     			window.Close();
+            
+            if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Tab) {
+                showEditor = !showEditor;
+            }
     	}
 
     	// Clear screen
@@ -50,10 +65,20 @@ int main (int argc, const char * argv[])
     	
     	// Draw the sprite
     	window.Draw(sprite);
-    	
-    	// Draw the string
-    	window.Draw(text);
 
+        if (showEditor) {
+            window.Draw(rect);
+            
+            // Draw the string
+            window.Draw(text);
+        }
+
+
+        std::stringstream fpsText;
+        fpsText << window.GetFrameTime();
+        fpsMonitor.SetString(fpsText.str());
+        window.Draw(fpsMonitor);
+        
     	// Update the window
     	window.Display();
     }

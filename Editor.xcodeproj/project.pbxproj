@@ -14,6 +14,8 @@
 		273DDA8C14DF06E300656874 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA8B14DF06E300656874 /* cute_image.jpg */; };
 		273DDA8E14DF06E300656874 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA8D14DF06E300656874 /* nice_music.ogg */; };
 		273DDA9314DF06E300656874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA9114DF06E300656874 /* InfoPlist.strings */; };
+		273DDA9A14DF07FC00656874 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA9914DF07FC00656874 /* MainMenu.xib */; };
+		273DDADF14DF14E500656874 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273DDADE14DF14E500656874 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +23,14 @@
 		273DDA8014DF06E300656874 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		273DDA8314DF06E300656874 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		273DDA8514DF06E300656874 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
-		273DDA8714DF06E300656874 /* ResourcePath.hpp */ = {isa = PBXFileReference; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		273DDA8714DF06E300656874 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		273DDA8914DF06E300656874 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		273DDA8B14DF06E300656874 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cute_image.jpg; sourceTree = "<group>"; };
 		273DDA8D14DF06E300656874 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
-		273DDA9014DF06E300656874 /* Editor-Info.plist */ = {isa = PBXFileReference; path = "Editor-Info.plist"; sourceTree = "<group>"; };
+		273DDA9014DF06E300656874 /* Editor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Editor-Info.plist"; sourceTree = "<group>"; };
 		273DDA9214DF06E300656874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		273DDA9914DF07FC00656874 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		273DDADE14DF14E500656874 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273DDADF14DF14E500656874 /* Cocoa.framework in Frameworks */,
 				273DDA8114DF06E300656874 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,6 +49,7 @@
 		273DDA7014DF06E300656874 = {
 			isa = PBXGroup;
 			children = (
+				273DDA9914DF07FC00656874 /* MainMenu.xib */,
 				273DDA8214DF06E300656874 /* Editor */,
 				273DDA7F14DF06E300656874 /* Frameworks */,
 				273DDA7D14DF06E300656874 /* Products */,
@@ -61,6 +67,7 @@
 		273DDA7F14DF06E300656874 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				273DDADE14DF14E500656874 /* Cocoa.framework */,
 				273DDA8014DF06E300656874 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -153,6 +160,7 @@
 				273DDA8C14DF06E300656874 /* cute_image.jpg in Resources */,
 				273DDA8E14DF06E300656874 /* nice_music.ogg in Resources */,
 				273DDA9314DF06E300656874 /* InfoPlist.strings in Resources */,
+				273DDA9A14DF07FC00656874 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
