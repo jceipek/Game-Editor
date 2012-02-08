@@ -9,6 +9,9 @@ int main (int argc, const char * argv[])
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor");
 
+    window.SetFramerateLimit(1000);
+    //window.EnableVerticalSync(true);
+    
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.LoadFromFile(ResourcePath() + "cute_image.jpg"))
@@ -30,6 +33,14 @@ int main (int argc, const char * argv[])
     sf::RectangleShape rect(sf::Vector2f(200.0f,600.0f));
     rect.SetFillColor(sf::Color(0,0,0,200));
     
+    sf::CircleShape circ(10.0f);
+    circ.SetFillColor(sf::Color(0,200,0));
+    circ.SetPosition(100.0f, 100.0f);
+    
+    float circx = 100.0f;
+    
+    sf::Clock Clock;
+    
     // Load a music to play
     sf::Music music;
     if (!music.OpenFromFile(ResourcePath() + "nice_music.ogg"))
@@ -39,12 +50,15 @@ int main (int argc, const char * argv[])
     music.Play();
         
     bool showEditor = false;
-
+    
     // Start the game loop
-    while (window.IsOpened())
+    while (window.IsOpen())
     {
     	// Process events
     	sf::Event event;
+        float ElapsedTime = (float)(Clock.GetElapsedTime().AsMilliseconds());
+        Clock.Restart();
+        
     	while (window.PollEvent(event))
     	{
     		// Close window : exit
@@ -58,13 +72,21 @@ int main (int argc, const char * argv[])
             if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Tab) {
                 showEditor = !showEditor;
             }
+            
+            if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Right) {
+                circx += ElapsedTime/1.0f;
+            }
     	}
 
+        circ.SetPosition(circx, 100.0f);
+        
     	// Clear screen
     	window.Clear();
     	
-    	// Draw the sprite
+    	// Draw the background
     	window.Draw(sprite);
+        
+        window.Draw(circ);
 
         if (showEditor) {
             window.Draw(rect);
@@ -75,7 +97,7 @@ int main (int argc, const char * argv[])
 
 
         std::stringstream fpsText;
-        fpsText << window.GetFrameTime();
+        fpsText << (1.f / (ElapsedTime));
         fpsMonitor.SetString(fpsText.str());
         window.Draw(fpsMonitor);
         
