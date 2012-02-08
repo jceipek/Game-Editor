@@ -35,7 +35,7 @@ int main (int argc, const char * argv[])
 #ifdef DEBUG_MONITOR
     sf::Text fpsMonitor("0", font, 20);
     fpsMonitor.SetColor(sf::Color::Black);
-    fpsMonitor.SetPosition(770.0f, 575.0f);
+    fpsMonitor.SetPosition(760.0f, 575.0f);
 #endif
     
     
@@ -138,7 +138,7 @@ int main (int argc, const char * argv[])
         switch (gameMode) {
             case PLAYING:
                 if(movingRight) {
-                    circ.Move(ElapsedTime.AsMilliseconds()/10.0f, 0.0f);
+                    circ.Move(ElapsedTime.AsMicroseconds()/10000.0f, 0.0f);
                 }
                 break;
 
@@ -158,7 +158,7 @@ int main (int argc, const char * argv[])
 
 #ifdef DEBUG_MONITOR
         std::stringstream fpsText;
-        fpsText << (1.f / (ElapsedTime.AsMilliseconds()));
+        fpsText << (1.f / (ElapsedTime.AsMicroseconds()/1000000.0f));
         fpsMonitor.SetString(fpsText.str());
         window.Draw(fpsMonitor);
 #endif
