@@ -1,8 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "ResourcePath.hpp"
+#include "Editor.hpp"
 
 #include <sstream>
+
+// Comment out to disable these features:
+#define DYNAMIC_TESTING
+#define DEBUG_MONITOR
 
 int main (int argc, const char * argv[])
 {
@@ -12,6 +17,28 @@ int main (int argc, const char * argv[])
     window.SetFramerateLimit(1000);
     //window.EnableVerticalSync(true);
     
+    enum GameMode {
+        PLAYING = 0,
+        EDITING,
+        PAUSED
+    } gameMode;
+    
+    sf::Font font;
+    if (!font.LoadFromFile(ResourcePath() + "sansation.ttf"))
+    	return EXIT_FAILURE;
+    
+    
+#ifdef DYNAMIC_TESTING
+    Editor editor(&window);
+#endif
+    
+#ifdef DEBUG_MONITOR
+    sf::Text fpsMonitor("0", font, 20);
+    fpsMonitor.SetColor(sf::Color::Black);
+    fpsMonitor.SetPosition(770.0f, 575.0f);
+#endif
+    
+    
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.LoadFromFile(ResourcePath() + "cute_image.jpg"))
@@ -19,27 +46,16 @@ int main (int argc, const char * argv[])
     sf::Sprite sprite(texture);
 
     // Create a graphical text to display
-    sf::Font font;
-    if (!font.LoadFromFile(ResourcePath() + "sansation.ttf"))
-    	return EXIT_FAILURE;
     sf::Text text("Object", font, 20);
     text.SetColor(sf::Color::White);
     text.SetPosition(10.0f, 0.0f);
 
-    sf::Text fpsMonitor("0", font, 20);
-    fpsMonitor.SetColor(sf::Color::Black);
-    fpsMonitor.SetPosition(770.0f, 575.0f);
-    
-    sf::RectangleShape rect(sf::Vector2f(200.0f,600.0f));
-    rect.SetFillColor(sf::Color(0,0,0,200));
     
     sf::CircleShape circ(10.0f);
     circ.SetFillColor(sf::Color(0,200,0));
     circ.SetPosition(100.0f, 100.0f);
     
-    float circx = 100.0f;
-    
-    sf::Clock Clock;
+    sf::Clock Clock; //Used to compute time since last update, since SFML 2 removed GetFrametime
     
     // Load a music to play
     sf::Music music;
@@ -50,13 +66,11 @@ int main (int argc, const char * argv[])
     music.Play();
     
     bool movingRight = false; //This variable accounts for the fact that events are not triggered regularly
-        
-    bool showEditor = false;
     
     // Start the game loop
     while (window.IsOpen())
     {
-        float ElapsedTime = (float)(Clock.GetElapsedTime().AsMilliseconds());
+        sf::Time ElapsedTime = Clock.GetElapsedTime();
         Clock.Restart();
         
     	// Process events
@@ -71,24 +85,47 @@ int main (int argc, const char * argv[])
     		if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Escape)
     			window.Close();
             
+            //Switch between editor and paused/playing if tab key pressed
             if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Tab) {
-                showEditor = !showEditor;
+                switch (gameMode) {
+                    case PLAYING:
+#ifdef DYNAMIC_TESTING
+                        gameMode = EDITING;
+#else
+                        gameMode = PAUSED;
+#endif
+                        break;
+                    case EDITING:
+                        gameMode = PAUSED;
+                        break;
+                    case PAUSED:
+                        gameMode = PLAYING;
+                        break;
+                    default:
+                        break;
+                }
             }
             
-            if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Right) {
-                movingRight = true;
-            }
-            
-            if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Right) {
-                movingRight = false;
+            switch (gameMode) {
+                case PLAYING:
+                    if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Right) {
+                        movingRight = true;
+                    }
+                    
+                    if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Right) {
+                        movingRight = false;
+                    }
+                    break;
+                case EDITING:
+                    
+                    break;
+                case PAUSED:
+                    
+                    break;
+                default:
+                    break;
             }
     	}
-
-        if(movingRight) {
-            circx += ElapsedTime/10.0f;
-        }
-        
-        circ.SetPosition(circx, 100.0f);
         
     	// Clear screen
     	window.Clear();
@@ -96,20 +133,35 @@ int main (int argc, const char * argv[])
     	// Draw the background
     	window.Draw(sprite);
         
-        window.Draw(circ);
+        window.Draw(circ); // Test "Entity"
 
-        if (showEditor) {
-            window.Draw(rect);
-            
-            // Draw the string
-            window.Draw(text);
+        switch (gameMode) {
+            case PLAYING:
+                if(movingRight) {
+                    circ.Move(ElapsedTime.AsMilliseconds()/10.0f, 0.0f);
+                }
+                break;
+
+            case EDITING:
+#ifdef DYNAMIC_TESTING
+                editor.update(ElapsedTime);
+                window.Draw(text);
+#endif
+                break;
+                
+            case PAUSED:
+                
+                break;
+            default:
+                break;
         }
 
-
+#ifdef DEBUG_MONITOR
         std::stringstream fpsText;
-        fpsText << (1.f / (ElapsedTime));
+        fpsText << (1.f / (ElapsedTime.AsMilliseconds()));
         fpsMonitor.SetString(fpsText.str());
         window.Draw(fpsMonitor);
+#endif
         
     	// Update the window
     	window.Display();

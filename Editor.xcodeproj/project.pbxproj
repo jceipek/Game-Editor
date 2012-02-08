@@ -16,6 +16,7 @@
 		273DDA9314DF06E300656874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA9114DF06E300656874 /* InfoPlist.strings */; };
 		273DDA9A14DF07FC00656874 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273DDA9914DF07FC00656874 /* MainMenu.xib */; };
 		273DDADF14DF14E500656874 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273DDADE14DF14E500656874 /* Cocoa.framework */; };
+		27927AA614E23A3F00629403 /* Editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27927AA514E23A3F00629403 /* Editor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		273DDA9214DF06E300656874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		273DDA9914DF07FC00656874 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		273DDADE14DF14E500656874 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		27927AA514E23A3F00629403 /* Editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Editor.cpp; sourceTree = "<group>"; };
+		27927AA814E23A6300629403 /* Editor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Editor.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				273DDA8314DF06E300656874 /* main.cpp */,
+				27927AA814E23A6300629403 /* Editor.hpp */,
+				27927AA514E23A3F00629403 /* Editor.cpp */,
 				273DDA8514DF06E300656874 /* ResourcePath.mm */,
 				273DDA8714DF06E300656874 /* ResourcePath.hpp */,
 				273DDA8814DF06E300656874 /* Resources */,
@@ -189,6 +194,7 @@
 			files = (
 				273DDA8414DF06E300656874 /* main.cpp in Sources */,
 				273DDA8614DF06E300656874 /* ResourcePath.mm in Sources */,
+				27927AA614E23A3F00629403 /* Editor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +347,7 @@
 				273DDA9814DF06E300656874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
