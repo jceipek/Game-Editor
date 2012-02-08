@@ -48,17 +48,19 @@ int main (int argc, const char * argv[])
 
     // Play the music
     music.Play();
+    
+    bool movingRight = false; //This variable accounts for the fact that events are not triggered regularly
         
     bool showEditor = false;
     
     // Start the game loop
     while (window.IsOpen())
     {
-    	// Process events
-    	sf::Event event;
         float ElapsedTime = (float)(Clock.GetElapsedTime().AsMilliseconds());
         Clock.Restart();
         
+    	// Process events
+    	sf::Event event;        
     	while (window.PollEvent(event))
     	{
     		// Close window : exit
@@ -74,10 +76,18 @@ int main (int argc, const char * argv[])
             }
             
             if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Right) {
-                circx += ElapsedTime/1.0f;
+                movingRight = true;
+            }
+            
+            if (event.Type == sf::Event::KeyReleased && event.Key.Code == sf::Keyboard::Right) {
+                movingRight = false;
             }
     	}
 
+        if(movingRight) {
+            circx += ElapsedTime/10.0f;
+        }
+        
         circ.SetPosition(circx, 100.0f);
         
     	// Clear screen
