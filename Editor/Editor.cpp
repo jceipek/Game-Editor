@@ -12,8 +12,8 @@
 
 Editor::Editor (sf::RenderWindow* window) {
     this->window = window;
-    
-    this->menuBase = sf::RectangleShape::RectangleShape(sf::Vector2f(200.0f,600.0f));
+
+    this->menuBase = sf::RectangleShape(sf::Vector2f(200.0f,600.0f));
     menuBase.SetFillColor(sf::Color(0,0,0,200)); // Translucent black
 }
 
@@ -22,7 +22,7 @@ Editor::~Editor() {
 }
 
 void Editor::update(sf::Time elapsedTime) {
-    
+
     //Draw:
     this->window->Draw(this->menuBase);
 }
