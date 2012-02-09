@@ -14,7 +14,7 @@ int main (int argc, const char * argv[])
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor");
 
-    window.SetFramerateLimit(1000);
+    //window.SetFramerateLimit(1000);
     //window.EnableVerticalSync(true);
     
     enum GameMode {
