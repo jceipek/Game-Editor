@@ -26,12 +26,17 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+
+#ifdef USING_OBJ_C
+
 #include "ResourcePath.hpp"
 #import <Foundation/Foundation.h>
+#include <iostream>
 
 ////////////////////////////////////////////////////////////
 std::string ResourcePath(void)
 {
+    std::cout << "Using Mac OS X ResourcePath\n";
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     
 	std::string rpath;
@@ -50,3 +55,5 @@ std::string ResourcePath(void)
     
     return rpath;
 }
+
+#endif

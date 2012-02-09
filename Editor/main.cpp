@@ -27,8 +27,8 @@ int main (int argc, const char * argv[])
     gameMode = PLAYING;
 
     sf::Font font;
-    //if (!font.LoadFromFile(ResourcePath() + "sansation.ttf"))
-    //	return EXIT_FAILURE;
+    if (!font.LoadFromFile(ResourcePath() + "sansation.ttf"))
+    	return EXIT_FAILURE;
 
 
 #ifdef DYNAMIC_TESTING
@@ -43,15 +43,15 @@ int main (int argc, const char * argv[])
 
 
     // Load a sprite to display
-    //sf::Texture texture;
-    //if (!texture.LoadFromFile(ResourcePath() + "cute_image.jpg"))
-    //	return EXIT_FAILURE;
-    //sf::Sprite sprite(texture);
+    sf::Texture texture;
+    if (!texture.LoadFromFile(ResourcePath() + "cute_image.jpg"))
+    	return EXIT_FAILURE;
+    sf::Sprite sprite(texture);
 
     // Create a graphical text to display
-    //sf::Text text("Object", font, 20);
-    //text.SetColor(sf::Color::White);
-    //text.SetPosition(10.0f, 0.0f);
+    sf::Text text("Object", font, 20);
+    text.SetColor(sf::Color::White);
+    text.SetPosition(10.0f, 0.0f);
 
 
     sf::CircleShape circ(10.0f);
@@ -61,12 +61,12 @@ int main (int argc, const char * argv[])
     sf::Clock Clock; //Used to compute time since last update, since SFML 2 removed GetFrametime
 
     // Load a music to play
-    //sf::Music music;
-    //if (!music.OpenFromFile(ResourcePath() + "nice_music.ogg"))
-    //	return EXIT_FAILURE;
+    sf::Music music;
+    if (!music.OpenFromFile(ResourcePath() + "nice_music.ogg"))
+    	return EXIT_FAILURE;
 
     // Play the music
-    //music.Play();
+    music.Play();
 
     bool movingRight = false; //This variable accounts for the fact that events are not triggered regularly
 
@@ -86,7 +86,7 @@ int main (int argc, const char * argv[])
 
     		// Escape pressed : exit
     		if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Escape) {
-    		    std::cout << "Escape Pressed!/n";
+    		    std::cout << "Escape Pressed!\n";
     			window.Close();
     		}
 
@@ -113,9 +113,7 @@ int main (int argc, const char * argv[])
 
             switch (gameMode) {
                 case PLAYING:
-                    std::cout << "Playing\n";
                     if (event.Type == sf::Event::KeyPressed && event.Key.Code == sf::Keyboard::Right) {
-                        std::cout << "Right Key\n";
                         movingRight = true;
                     }
 
@@ -124,10 +122,8 @@ int main (int argc, const char * argv[])
                     }
                     break;
                 case EDITING:
-                    std::cout << "Editing\n";
                     break;
                 case PAUSED:
-                    std::cout << "Paused\n";
                     break;
                 default:
                     break;
@@ -138,7 +134,7 @@ int main (int argc, const char * argv[])
     	window.Clear();
 
     	// Draw the background
-    	//window.Draw(sprite);
+    	window.Draw(sprite);
 
         window.Draw(circ); // Test "Entity"
 
@@ -152,7 +148,7 @@ int main (int argc, const char * argv[])
             case EDITING:
 #ifdef DYNAMIC_TESTING
                 editor.update(ElapsedTime);
-                //window.Draw(text);
+                window.Draw(text);
 #endif
                 break;
 
@@ -167,7 +163,7 @@ int main (int argc, const char * argv[])
         std::stringstream fpsText;
         fpsText << (1.f / (ElapsedTime.AsMicroseconds()/1000000.0f));
         fpsMonitor.SetString(fpsText.str());
-        //window.Draw(fpsMonitor);
+        window.Draw(fpsMonitor);
 #endif
 
     	// Update the window
