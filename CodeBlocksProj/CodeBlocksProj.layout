@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="../Editor/Editor.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="205" topLine="0" />
+	</File>
+	<File name="../Editor/ResourcePath.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="319" topLine="0" />
+	</File>
+	<File name="../Editor/ResourcePath.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="1730" topLine="5" />
+	</File>
+	<File name="../Editor/ResourcePath.mm" open="1" top="1" tabpos="4">
+		<Cursor position="1417" topLine="20" />
+	</File>
+</CodeBlocks_layout_file>
