@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="gd_project_codeblocks" />
+		<Option title="CodeBlocksProj" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/gd_project_codeblocks" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/CodeBlocksProj" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/gd_project_codeblocks" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/CodeBlocksProj" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,7 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Linker>
+			<Add library="sfml-system" />
+			<Add library="sfml-window" />
+			<Add library="sfml-graphics" />
+			<Add library="sfml-audio" />
+		</Linker>
+		<Unit filename="../Editor/Editor.cpp" />
+		<Unit filename="../Editor/Editor.hpp" />
+		<Unit filename="../Editor/ResourcePath.cpp" />
+		<Unit filename="../Editor/ResourcePath.hpp" />
+		<Unit filename="../Editor/ResourcePath.mm" />
+		<Unit filename="../Editor/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

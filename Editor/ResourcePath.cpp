@@ -12,7 +12,6 @@
 std::string ResourcePath(void)
 {
     std::cout << "Using Linux ResourcePath!\n";
-    std::cout << "Don't know if this will actually work. Linux Devs, if this fails, find a way to fix it; don't comment out resource loading again.";
     return "../Resources/";
 }
 #endif

@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1328748092 source:/home/jgibson/Development/Game_Design/Game-Editor/Editor/Editor.cpp
+	<iostream>
+	"Editor.hpp"
+
+1328728107 /home/jgibson/Development/Game_Design/Game-Editor/Editor/Editor.hpp
+	<SFML/Graphics.hpp>
+
+1328805037 source:/home/jgibson/Development/Game_Design/Game-Editor/Editor/ResourcePath.cpp
+	"ResourcePath.hpp"
+	<iostream>
+
+1328728107 /home/jgibson/Development/Game_Design/Game-Editor/Editor/ResourcePath.hpp
+	<string>
+
+1328805037 source:/home/jgibson/Development/Game_Design/Game-Editor/Editor/main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"ResourcePath.hpp"
+	"Editor.hpp"
+	<iostream>
+	<sstream>
+

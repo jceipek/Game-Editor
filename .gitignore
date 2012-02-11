@@ -1,6 +1,4 @@
 gd_project_codeblocks/bin
 gd_project_codeblocks/bin/*
-gs_project_codeblocks/obj
-gs_project_codeblocks/obj/*
 .*.swp
 *.swp
