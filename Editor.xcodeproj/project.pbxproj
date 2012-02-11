@@ -11,6 +11,7 @@
 		271670F814E36BA7002950D8 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 271670F514E36BA7002950D8 /* cute_image.jpg */; };
 		271670F914E36BA7002950D8 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 271670F614E36BA7002950D8 /* nice_music.ogg */; };
 		271670FA14E36BA7002950D8 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 271670F714E36BA7002950D8 /* sansation.ttf */; };
+		2716710114E5EC26002950D8 /* libpython2.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2716710014E5EC26002950D8 /* libpython2.7.dylib */; };
 		273DDA8114DF06E300656874 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273DDA8014DF06E300656874 /* Foundation.framework */; };
 		273DDA8414DF06E300656874 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 273DDA8314DF06E300656874 /* main.cpp */; };
 		273DDA8614DF06E300656874 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 273DDA8514DF06E300656874 /* ResourcePath.mm */; };
@@ -24,6 +25,7 @@
 		271670F514E36BA7002950D8 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cute_image.jpg; path = Resources/cute_image.jpg; sourceTree = SOURCE_ROOT; };
 		271670F614E36BA7002950D8 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = nice_music.ogg; path = Resources/nice_music.ogg; sourceTree = SOURCE_ROOT; };
 		271670F714E36BA7002950D8 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = Resources/sansation.ttf; sourceTree = SOURCE_ROOT; };
+		2716710014E5EC26002950D8 /* libpython2.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpython2.7.dylib; path = usr/lib/libpython2.7.dylib; sourceTree = SDKROOT; };
 		273DDA7C14DF06E300656874 /* Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Editor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273DDA8014DF06E300656874 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		273DDA8314DF06E300656874 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2716710114E5EC26002950D8 /* libpython2.7.dylib in Frameworks */,
 				273DDADF14DF14E500656874 /* Cocoa.framework in Frameworks */,
 				273DDA8114DF06E300656874 /* Foundation.framework in Frameworks */,
 			);
@@ -52,6 +55,7 @@
 		273DDA7014DF06E300656874 = {
 			isa = PBXGroup;
 			children = (
+				2716710014E5EC26002950D8 /* libpython2.7.dylib */,
 				273DDA8214DF06E300656874 /* Editor */,
 				273DDA7F14DF06E300656874 /* Frameworks */,
 				273DDA7D14DF06E300656874 /* Products */,
@@ -306,6 +310,7 @@
 		273DDA9714DF06E300656874 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -320,6 +325,7 @@
 		273DDA9814DF06E300656874 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";

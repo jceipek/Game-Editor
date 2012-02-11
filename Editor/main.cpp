@@ -1,3 +1,5 @@
+#include <Python/Python.h>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "ResourcePath.hpp"
@@ -6,12 +8,18 @@
 #include <iostream>
 #include <sstream>
 
+
+
 // Comment out to disable these features:
 #define DYNAMIC_TESTING
 #define DEBUG_MONITOR
 
 int main (int argc, const char * argv[])
 {
+    Py_Initialize();
+    PyRun_SimpleString("print('Now we have Python action!')\n");
+    Py_Finalize();
+    
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor");
 
