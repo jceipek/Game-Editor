@@ -21,7 +21,7 @@ int main (int argc, const char * argv[])
     Py_Finalize();
     
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "The Random Editor", sf::Style::Close);
 
     //window.SetFramerateLimit(1000);
     //window.EnableVerticalSync(true);
