@@ -13,7 +13,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -23,7 +23,7 @@
         padding: 9px 0;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../../css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -59,39 +59,66 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Design WIP</li>
-              <li><a href="pages/design-wip/rendering-engine.html">Rendering Engine</a></li>
+              <li class='active'><a href="#">Rendering Engine</a></li>
               <li>More to come...</li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <div class="hero-unit">
-            <h1>Game Editor <small>(Don't worry, the name will change!)</small></h1>
-            <p>A C++ game engine/editor with Python for Game Logic. Inspired by the editing flexibility of Aquaria's game editor and Blender's keyboard shortcuts.</p>
-            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-          </div>
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Features</h2>
-              <p>None so far, sorry!</p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Technologies</h2>
-              <ul>
-              <li> SFML 2.0 beta
-              <li> C++
-              <li> Python
-              </ul>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Design WIP</h2>
-              <p>This is where we explain how everything works while we are building the engine.</p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-            </div><!--/span-->
+          <h1>Rendering Engine</h1>
+          <h2>Coordinates</h2>
+          <p>
+            Dealing with pixels is annoying, especially given different aspect ratios and resolutions, so we are using a normalized coordinate system, 
+            as suggested in Jason Gregory's <em>Game Engine Architecture</em>.
+          </p>
+          <p>
+            There are 3 coordinate systems used in the engine:
+          </p>
+          <h3>Overlay</h3>
+          <p>
+            This coordinate style is used for absolute sprite positioning, such as when menus, health bars, or popups need to be displayed.
+
+            In this system, the y position of overlays ranges from <b>0</b> at the top of the screen to <b>1.0</b> at the bottom of the screen.
+            The range of the x coordinate is based on the y coordinate. For example, a <b>16:9</b> aspect ratio will yield <b>0</b>-<b>1.<span style="text-decoration: overline">777</span></b>.
+            <div class="alert alert-info">
+              <strong>Convention:</strong> When using variables with this coordinate style, prepend them with a lowercase 'o'. 
+              For example: <code>oPosition</code>
+            </div>
+
+            <div class="alert">
+              <strong>For Discussion:</strong> Gregory suggests using negative coordinates to refer to objects anchored at the lower left corner of the screen, which seems really clunky to me,
+              especially since it offers no clean way to center something horizontally. How do we want to do this? <em>- Julian</em>
+            </div>
+
+            <div class="alert">
+              <strong>For Discussion:</strong> SFML uses degrees as the units of rotation. Do we want to use those for overlays and radians for physics rotations? <em>- Julian</em>
+            </div>
+
+
+          </p>
+          <h3>Physics</h3>
+          <p>
+            The game entities in the engine have positions in meters, because the physics engine is accurate at that scale. This system is used when you want to place or move characters or
+            parts of the environment in a game.
+            <div class="alert alert-info">
+              <strong>Convention:</strong> When using variables with this coordinate style, prepend them with a lowercase 'm'. 
+              For example: <code>mPosition</code>
+            </div>
+          </p>
+          <h3>Pixels</h3>
+          <p>
+            The engine uses pixels internally when displaying graphics.
+            <div class="alert alert-info">
+              <strong>Convention:</strong> When using variables with this coordinate style, prepend them with 'px'. 
+              For example: <code>pxPosition</code>
+            </div>
+
+            <div class="alert alert-error">
+              <strong>Important:</strong> When you are making a game on top of the engine, you should <strong>never</strong> have to use this coordinate system.
+            </div>
+          </p>
+          <h3>Assets</h3>
+          </div><!--/span-->
       </div><!--/row-->
 
       <hr>
