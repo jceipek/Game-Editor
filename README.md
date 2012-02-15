@@ -1,7 +1,9 @@
+Note: This project is on hold while we determine whether developing our game in Unity will be faster. Hopefully we will be able to make this engine based on what we learn from using Unity.
+
 What?
 =====
 
-A C++ game engine/editor with Python for Game Logic. Inspired by the editing flexibility of Aquaria's game editor and Blender's keyboard shortcuts.
+A planned C++ game engine/editor with Python for Game Logic. Inspired by the editing flexibility of Aquaria's game editor and Blender's keyboard shortcuts.
 
 Why?
 ====
